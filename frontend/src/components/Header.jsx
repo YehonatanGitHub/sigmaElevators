@@ -1,4 +1,4 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUser, FaUserFriends } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
@@ -17,25 +17,32 @@ function Header() {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link to='/'>GoalSetter</Link>
+        <Link to='/'>סיגמא מעליות</Link>
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className='btn' onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </button>
-          </li>
+          <>
+            <li className='btn-customers'>
+              <Link to='/customers'>
+                <FaUserFriends /> לקוחות
+              </Link>
+            </li>
+            <li>
+              <button className='btn' onClick={onLogout}>
+                <FaSignOutAlt /> יציאה
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>
               <Link to='/login'>
-                <FaSignInAlt /> Login
+                <FaSignInAlt /> כניסה
               </Link>
             </li>
             <li>
               <Link to='/register'>
-                <FaUser /> Register
+                <FaUser /> רישום
               </Link>
             </li>
           </>
